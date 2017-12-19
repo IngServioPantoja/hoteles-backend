@@ -9,8 +9,8 @@ soporta el filtrado por name y strellas
 exports.listar = function(req, res) {
 
   console.log('GET /hoteles');
-  var name = req.param('name');
-  var stars = req.param('stars');
+  var name = req.query['name'];
+  var stars = req.query['stars'];
   console.log("Parametros enviados " + name + " " + stars);
 
   if (undefined == stars && undefined == name) {
