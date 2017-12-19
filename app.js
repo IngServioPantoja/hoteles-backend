@@ -2,7 +2,8 @@ var express = require("express"),
   app = express(),
   bodyParser = require("body-parser"),
   methodOverride = require("method-override"),
-  mongoose = require('mongoose');
+  mongoose = require('mongoose'),
+  conf = require('config');
 mongoose.plugin(require('meanie-mongoose-to-json'));
 
 // Connection to DB
@@ -12,7 +13,7 @@ db.once('open', function() {
   console.log("Successful connection to db!"); //not shown
 });
 
-mongoose.connect('mongodb://localhost/hotelesdb', function(err, res) {
+mongoose.connect('mongodb://' + conf.bd, function(err, res) {
   if (err) throw err;
   console.log('Connected to Database');
 });
@@ -65,6 +66,6 @@ hotelesRouter.route('/hoteles/:id')
 app.use('/', hotelesRouter);
 
 // Start server
-app.listen(3000, function() {
-  console.log("Node server running on http://localhost:3000");
+app.listen(conf.port, function() {
+  console.log("Node server running on http://localhost:" + conf.port);
 });

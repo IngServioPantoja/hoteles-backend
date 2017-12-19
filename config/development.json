@@ -1,0 +1,5 @@
+{
+  "name": "ALMUNDO",
+  "bd": "localhost/hotelesdb",
+  "port": 3000
+}
